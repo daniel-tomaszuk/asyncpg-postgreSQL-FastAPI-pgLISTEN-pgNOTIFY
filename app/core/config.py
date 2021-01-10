@@ -15,7 +15,15 @@ class AppSettings:
         return str(val).lower() in ("true", "1")
 
 
+class DBSettings:
+    db_user: str = "postgres"
+    db_host: str = "postgres"
+    db_name: str = "postgres"
+    db_port: int = 5432
+
+
 settings = AppSettings()
+db_settings = DBSettings()
 
 PROJECT_NAME = settings.PROJECT_NAME
 DEBUG = settings.DEBUG
