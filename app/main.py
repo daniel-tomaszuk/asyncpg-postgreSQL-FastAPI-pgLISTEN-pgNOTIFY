@@ -8,7 +8,8 @@ from app.core import config
 
 def get_application() -> FastAPI:
     application = FastAPI(
-        title=config.PROJECT_NAME, debug=config.DEBUG, openapi_url="/docs/store-management/openapi.json"
+        title=config.PROJECT_NAME,
+        debug=config.DEBUG,
     )
 
     application.add_middleware(
