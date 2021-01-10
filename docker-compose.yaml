@@ -1,0 +1,25 @@
+version: "3.7"
+
+# x-extension fields
+x-env_file: &env_file
+  env_file:
+    - ./.env
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres-asyncpg-data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+
+volumes:
+  postgres-asyncpg-data:
+
+networks:
+  default:
+    external:
+      name: asyncpg-fastapi-network
