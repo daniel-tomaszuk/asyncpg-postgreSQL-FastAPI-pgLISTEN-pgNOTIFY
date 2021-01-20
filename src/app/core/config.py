@@ -19,6 +19,7 @@ class AppSettings:
     DEBUG: bool = True
     PROJECT_NAME: str = "Asyncpg-FastAPI"
     ALLOWED_HOSTS: List[str] = field(default_factory=get_default_allowed_hosts)
+    CACHE_ITEMS_MAX_SIZE: int = 65536
 
     @staticmethod
     def _prepare_debug(val: Any) -> bool:
