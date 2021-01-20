@@ -11,6 +11,8 @@ uvicorn = "^0.13.3"
 alembic = "^1.4.3"
 gino = {version = "^1.0.1", extras = ["starlette"]}
 psycopg2 = "^2.8.6"
+boltons = "^20.2.1"
+ujson = "^4.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.1"

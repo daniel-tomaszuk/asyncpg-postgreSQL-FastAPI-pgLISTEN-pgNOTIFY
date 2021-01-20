@@ -1,9 +1,14 @@
+from typing import Any
+from typing import Dict
+from typing import Union
+
+from fastapi import APIRouter
+
 from app.api.schemas.users import UserIdSchemaOut
 from app.api.schemas.users import UserSchemaIn
 from app.api.schemas.users import UserSchemaOut
 from app.core.utils.timeit import async_timeit
 from app.postgres.models.users import User
-from fastapi import APIRouter
 
 GET_USER_ID_URL = "/users/{user_id}"
 POST_USER_URL = "/users"
@@ -19,9 +24,9 @@ def init_app(app_instance):
 
 @router.get(GET_USER_ID_URL, response_model=UserSchemaOut)
 @async_timeit
-async def get_user(user_id: int):
-    user = await User.get_or_404(user_id)
-    return user.to_dict()
+async def get_user(user_id: int) -> Dict[str, Any]:
+    user: Union[User, Dict[str, Any]] = await User.get_user_by_id(user_id)
+    return user if type(user) is dict else user.to_dict()
 
 
 @router.post(POST_USER_URL, response_model=UserSchemaOut)
