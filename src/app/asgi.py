@@ -1,3 +1,5 @@
+import os
+
 import uvicorn
 from fastapi import FastAPI
 from postgres.db.session import DbEventsListener
@@ -21,4 +23,5 @@ async def add_app_db_events_listeners():
 
 
 if __name__ == "__main__":
-    uvicorn.run(asgi_app, host="0.0.0.0", port=8000)
+    app_workers: int = os.cpu_count() // 6  # https://docs.gunicorn.org/en/stable/design.html#how-many-workers
+    uvicorn.run("asgi:asgi_app", host="0.0.0.0", port=8000, timeout_keep_alive=60, workers=app_workers)
