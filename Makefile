@@ -6,3 +6,12 @@ revision:
 
 migrate:
 	cd src/app/ && alembic upgrade head
+
+locust:
+	locust -f tests/locust/locustfile.py
+
+locust-master:
+	locust -f tests/locust/locustfile.py --master
+
+locust-worker:
+	locust -f tests/locust/locustfile.py --worker
