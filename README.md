@@ -1,7 +1,7 @@
 # asyncpg-postgreSQL-FastAPI-pgLISTEN-pgNOTIFY
 
 
-# TODO:
+# DONE:
 1. Use PostgreSQL, alembic, SQLAlchemy, GINO (https://python-gino.org/docs/en/1.0/tutorials/fastapi.html) to setup DB and connect app with it. Use async connector only! [DONE]
 2. Create socket handlers in the app so later it's possible to use Postgres pgLISTEN-pgNOTIFY events. [DONE]
 3. Add required Postgres plugin (hstore: https://www.postgresql.org/docs/13/hstore.html) installation and proper SQL triggers in the DB. [DONE]
